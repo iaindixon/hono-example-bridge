@@ -13,13 +13,13 @@
         </dataFormats>
 
         <route id="store">
-            <from uri="amqp:telemetry/DEFAULT_TENANT" />
+            <from uri="amqp:event/DEFAULT_TENANT" />
 
             <setHeader id="setKafkaKey" headerName="kafka.KEY">
                 <simple>${header[device_id]}</simple>
             </setHeader>
 
-            <to uri="kafka:telemetry?brokers=hono-kafka-cluster-kafka.strimzi.svc:9092" />
+            <to uri="kafka:event?brokers=hono-kafka-cluster-kafka.strimzi.svc:9092" />
         </route>
 
     </camelContext>
